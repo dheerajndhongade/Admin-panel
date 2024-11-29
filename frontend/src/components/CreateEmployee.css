@@ -1,0 +1,67 @@
+/* Ensure the form takes the full height of the screen and is scrollable */
+.create-employee-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Make the container take the full viewport height */
+  justify-content: flex-start; /* Align items to the top */
+  padding: 20px;
+  background-color: #f4f4f4;
+  overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.create-employee-form {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="file"],
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}

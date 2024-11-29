@@ -1,23 +1,31 @@
 const express = require("express");
 const multer = require("multer");
+const path = require("path");
 const employeeController = require("../controllers/employeeController");
-const path = require("path"); // <-- Add this line
 
-const router = express.Router();
-
-// Set up multer for file uploads
+// Multer setup for image uploading
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // Upload images to the 'uploads' folder
+    cb(null, "uploads/"); // Folder to store uploaded files
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Ensure unique file names
+    cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
   },
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage: storage });
 
-// Create Employee route
-router.post("/create", upload.single("img"), employeeController.createEmployee);
+const router = express.Router();
+
+// Routes
+router.get("/api/employees", employeeController.getEmployees);
+router.get("/api/employees/:id", employeeController.getEmployeeById);
+router.post(
+  "/api/employees/create",
+  upload.single("img"),
+  employeeController.createEmployee
+);
+router.put("/api/employees/:id", employeeController.updateEmployee);
+router.delete("/api/employees/:id", employeeController.deleteEmployee);
 
 module.exports = router;

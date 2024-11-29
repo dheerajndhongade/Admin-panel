@@ -29,7 +29,7 @@ const Dashboard = () => {
             <button onClick={() => navigate("/home")}>Home</button>
           </li>
           <li>
-            <button onClick={() => navigate("/employee-list")}>
+            <button onClick={() => navigate("/employees")}>
               Employee List
             </button>
           </li>
