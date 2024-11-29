@@ -7,7 +7,8 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const response = await fetch("/api/login", {
+    console.log(password, username);
+    const response = await fetch("http://localhost:5000/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
@@ -15,8 +16,8 @@ const Login = () => {
 
     const data = await response.json();
     if (data.token) {
-      localStorage.setItem("token", data.token);
-      window.location.href = "/dashboard";
+      localStorage.setItem("token", data.token); // Store the token in localStorage
+      window.location.href = "/dashboard"; // Redirect to dashboard
     } else {
       alert("Invalid login credentials");
     }
